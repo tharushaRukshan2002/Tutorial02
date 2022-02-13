@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#87FFED">
+
+    <TextView
+        android:textAlignment="center"
+        android:id="@+id/headingTxt"
+        android:layout_width="287dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="serif-monospace"
+        android:text="@string/heading"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/questionTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/Question"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textAlignment="center"
+        android:textColor="@color/random_text"
+        android:id="@+id/randomBreedTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTxt"
+        tools:text="Hey" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/randomBreedTxt">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:backgroundTint="@color/teal_700"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageButton
+            android:backgroundTint="@color/teal_700"
+            android:id="@+id/imageButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:srcCompat="@tools:sample/avatars" />
+    </LinearLayout>
+
+    <ImageButton
+        android:backgroundTint="@color/teal_700"
+        android:id="@+id/imageButton2"
+        android:layout_width="226dp"
+        android:layout_height="175dp"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
