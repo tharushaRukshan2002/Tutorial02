@@ -3,4 +3,5 @@
     <string name="heading">Guess and win</string>
     <string name="Question">Select the image for dog breed</string>
     <string name="submit_btn">SUBMIT</string>
+    <string name="submit">Submit</string>
 </resources>

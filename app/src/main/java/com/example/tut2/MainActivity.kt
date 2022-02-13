@@ -1,8 +1,10 @@
 package com.example.tut2
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 
@@ -22,9 +24,13 @@ class MainActivity : AppCompatActivity() {
     //to keep the generated numbers and preventing the same number repeating twice
     private val dogImagesNumber = mutableListOf<Int>()
 
+    //correct answer
     private lateinit var correctAnswer: ImageButton
 
-    @SuppressLint("NewApi")
+    //selected answer
+    private lateinit var selectedAnswer: ImageButton
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -32,9 +38,30 @@ class MainActivity : AppCompatActivity() {
         accessingElements()
         createDogs()
         randomImages()
+        val submitBtn: Button = findViewById(R.id.submitBtn)
+        val questionTxt: TextView = findViewById(R.id.questionTxt)
+
 
         imageButton[0].setOnClickListener {
-            checkAnswer(imageButton[0])
+            selectedAnswer = imageButton[0]
+        }
+        imageButton[1].setOnClickListener {
+            selectedAnswer = imageButton[1]
+        }
+        imageButton[2].setOnClickListener {
+            selectedAnswer = imageButton[2]
+        }
+
+        submitBtn.setOnClickListener {
+            questionTxt.text = "Your answer is"
+            randomBreed.setTypeface(null, Typeface.ITALIC)
+            if (selectedAnswer == correctAnswer) {
+                randomBreed.text = "CORRECT!"
+                randomBreed.setTextColor((Color.parseColor("#0e7d17")))//green
+            } else {
+                randomBreed.text = "WRONG!"
+                randomBreed.setTextColor((Color.parseColor("#e81e1e")))///red
+            }
         }
 
     }
@@ -69,11 +96,12 @@ class MainActivity : AppCompatActivity() {
      */
     private fun randomImages() {
 
-        if(dogs.size != dogImagesNumber.size) {
+        if (dogs.size != dogImagesNumber.size) {
             val imageFrameNum = mutableListOf<Int>()
             var i = 0
             while (i < imageButton.size) {
-                val frameNum = (0 until imageButton.size).random() //this number selects the ImageButton from the array
+                val frameNum =
+                    (0 until imageButton.size).random() //this number selects the ImageButton from the array
                 val dogPic = (0 until dogs.size).random() //random number to take dogs array dog
 
                 if (frameNum !in imageFrameNum && dogPic !in dogImagesNumber) {
@@ -97,23 +125,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    /**
-     * check whether the button is the correct match or not
-     * @param imageButton: taking image btn as a input.
-     */
-    private fun checkAnswer(imageButton: ImageButton) {
-        if (imageButton == correctAnswer) {
-            alert("correct")
-        } else {
-            alert("wrong")
-        }
 
-    }
-
-    private fun alert(massage: String) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Choose breed game")
-        builder.setMessage(massage)
-        builder.show()
-    }
 }
