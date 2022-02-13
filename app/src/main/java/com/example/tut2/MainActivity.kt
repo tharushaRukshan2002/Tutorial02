@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
     //correct answer
     private lateinit var correctAnswer: ImageButton
 
-    //selected answer
-    private lateinit var selectedAnswer: ImageButton
+    //selected answer setting null to make sure answer is chosen once
+    private var selectedAnswer: ImageButton? = null
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,21 +43,32 @@ class MainActivity : AppCompatActivity() {
 
 
         imageButton[0].setOnClickListener {
-            selectedAnswer = imageButton[0]
+            if (selectedAnswer == null) {
+                selectedAnswer = imageButton[0]
+            }
+
         }
         imageButton[1].setOnClickListener {
-            selectedAnswer = imageButton[1]
+            if (selectedAnswer == null) {
+                selectedAnswer = imageButton[1]
+            }
+
         }
         imageButton[2].setOnClickListener {
-            selectedAnswer = imageButton[2]
+            if (selectedAnswer == null) {
+                selectedAnswer = imageButton[2]
+            }
+
         }
+
+
 
         submitBtn.setOnClickListener {
             questionTxt.text = "Your answer is"
             randomBreed.setTypeface(null, Typeface.ITALIC)
             if (selectedAnswer == correctAnswer) {
                 randomBreed.text = "CORRECT!"
-                randomBreed.setTextColor((Color.parseColor("#0e7d17")))//green
+                randomBreed.setTextColor((Color.parseColor("#0af531")))//green
             } else {
                 randomBreed.text = "WRONG!"
                 randomBreed.setTextColor((Color.parseColor("#e81e1e")))///red
