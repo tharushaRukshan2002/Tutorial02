@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#87FFED">
+    android:background="@color/primary"
+    >
 
     <TextView
         android:textAlignment="center"
@@ -14,9 +15,9 @@
         android:layout_width="287dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="serif-monospace"
+        android:fontFamily="casual"
         android:text="@string/heading"
-        android:textColor="@color/black"
+        android:textColor="@color/primary_text"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +40,7 @@
 
     <TextView
         android:textAlignment="center"
-        android:textColor="@color/random_text"
+        android:textColor="@color/accent"
         android:id="@+id/randomBreedTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,14 +67,14 @@
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
-            android:backgroundTint="@color/teal_700"
+            android:backgroundTint="@color/primary_dark"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             tools:ignore="SpeakableTextPresentCheck"
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageButton
-            android:backgroundTint="@color/teal_700"
+            android:backgroundTint="@color/primary_dark"
             android:id="@+id/imageButton3"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
@@ -84,7 +85,7 @@
     </LinearLayout>
 
     <ImageButton
-        android:backgroundTint="@color/teal_700"
+        android:backgroundTint="@color/primary_dark"
         android:id="@+id/imageButton2"
         android:layout_width="226dp"
         android:layout_height="175dp"
