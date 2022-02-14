@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         randomImages()
         val submitBtn: Button = findViewById(R.id.submitBtn)
         val questionTxt: TextView = findViewById(R.id.questionTxt)
+        val nextBtn: Button = findViewById(R.id.nextBtn)
 
 
         imageButton[0].setOnClickListener {
@@ -59,6 +60,9 @@ class MainActivity : AppCompatActivity() {
                 selectedAnswer = imageButton[2]
             }
 
+        }
+        nextBtn.setOnClickListener {
+            randomImages()
         }
 
 
