@@ -27,8 +27,17 @@ class MainActivity : AppCompatActivity() {
     //correct answer
     private lateinit var correctAnswer: ImageButton
 
+    //question txt
+    private lateinit var questionTxt: TextView
+
     //selected answer setting null to make sure answer is chosen once
     private var selectedAnswer: ImageButton? = null
+
+    //number of correct answers
+    private var numCorrectAnswers: Int = 0
+
+    //number of wrong answers
+    private var numWrongAnswers: Int = 0
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         createDogs()
         randomImages()
         val submitBtn: Button = findViewById(R.id.submitBtn)
-        val questionTxt: TextView = findViewById(R.id.questionTxt)
+        questionTxt = findViewById(R.id.questionTxt)
         val nextBtn: Button = findViewById(R.id.nextBtn)
 
 
@@ -62,21 +71,33 @@ class MainActivity : AppCompatActivity() {
 
         }
         nextBtn.setOnClickListener {
+            selectedAnswer = null
+            questionTxt.text = "Select the image for dog breed"
             randomImages()
         }
 
 
 
         submitBtn.setOnClickListener {
-            questionTxt.text = "Your answer is"
+
             randomBreed.setTypeface(null, Typeface.ITALIC)
-            if (selectedAnswer == correctAnswer) {
-                randomBreed.text = "CORRECT!"
-                randomBreed.setTextColor((Color.parseColor("#0af531")))//green
-            } else {
-                randomBreed.text = "WRONG!"
-                randomBreed.setTextColor((Color.parseColor("#e81e1e")))///red
+            questionTxt.text = "Your answer is"
+            when (selectedAnswer) {
+                correctAnswer -> {
+                    randomBreed.text = "CORRECT!"
+                    randomBreed.setTextColor((Color.parseColor("#0af531")))//green
+                    numCorrectAnswers += 1
+                }
+                null -> {
+                    questionTxt.text = "Guess!!!!"
+                }
+                else -> {
+                    randomBreed.text = "WRONG!"
+                    randomBreed.setTextColor((Color.parseColor("#e81e1e")))///red
+                    numWrongAnswers += 1
+                }
             }
+
         }
 
     }
@@ -109,9 +130,11 @@ class MainActivity : AppCompatActivity() {
      * This will put random images into random image buttons. and the local array will keep track
      * of the numbers.
      */
+    @SuppressLint("SetTextI18n")
     private fun randomImages() {
 
         if (dogs.size != dogImagesNumber.size) {
+
             val imageFrameNum = mutableListOf<Int>()
             var i = 0
             while (i < imageButton.size) {
@@ -120,12 +143,14 @@ class MainActivity : AppCompatActivity() {
                 val dogPic = (0 until dogs.size).random() //random number to take dogs array dog
 
                 if (frameNum !in imageFrameNum && dogPic !in dogImagesNumber) {
+
                     if (i == 0) {
                         imageButton[frameNum].setImageResource(dogs[dogPic].image)// setting the image
                         imageFrameNum.add(frameNum)
                         correctAnswer = imageButton[frameNum]
                         dogImagesNumber.add(dogPic)
                         randomBreed.text = dogs[dogPic].name
+                        randomBreed.setTextColor((Color.parseColor("#FF5252")))
                         ++i
                     } else {
                         imageButton[frameNum].setImageResource(dogs[dogPic].image)
